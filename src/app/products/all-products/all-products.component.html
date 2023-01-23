@@ -1,0 +1,40 @@
+<!-- 
+<pre>
+    {{searchTerm | json}}
+</pre> -->
+
+<!-- Section-->
+<section class="py-5">
+    <div class="container px-4 px-lg-5 mt-5">
+        <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-3 justify-content-center">
+            <div class="col mb-5" *ngFor="let products of allProducts | filter :searchTerm:'title' ">
+                <div class="card h-100 align-items-center border-primary">
+                    <!-- Product image-->
+                    <img class="card-img-top p-4" [src]=products.image alt="..." />
+                    <!-- Product details-->
+                    <div class="card-body p-4" >
+                        <div class="text-center">
+                            <!-- Product name-->
+                            <h5 class="fw-bolder">{{products.title}}</h5>
+                            <!-- Product price-->
+                            ${{products.price}}
+                        </div>
+                    </div>
+                    <!-- Product actions-->
+                    <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
+
+                        <button (click)="addToWishlist(products)" style="float: left;" class="btn btn-outline-danger mt-auto me-5">
+                            <i class="fa fa-heart"></i>
+                        </button>
+                        <button (click)="addToCart(products)" style="float: right;" class="btn btn-outline-success mt-auto">
+                            <i class="fa-solid fa-cart-plus"></i>
+                        </button>
+
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

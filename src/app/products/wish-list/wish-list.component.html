@@ -1,0 +1,45 @@
+<!-- When cart is empty -->
+<div class="container" *ngIf="eMsg">
+    <div class="row text-center mt-2">
+        <div class="col" style="margin-top: 100px;">
+            <img src="https://cdn.shopify.com/s/files/1/0367/8787/9980/files/wishlist-empty_1168x400.png?v=1617611969"
+                alt="no image">
+            <h3 class="mt-2"> Your Wish list is Empty</h3>
+            <a class="btn btn-dark mt-2" routerLink="/">Add to Wishlist</a>
+        </div>
+    </div>
+</div>
+
+
+<!-- Section-->
+<section class="py-5" >
+    <div class="container px-4 px-lg-5 mt-5">
+        <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-3 justify-content-center">
+            <div class="col mb-5" *ngFor="let products of wishList">
+                <div class="card h-100 align-items-center p-5  border-primary">
+                    <!-- Product image-->
+                    <img class="card-img-top" [src]="products.image" alt="..." />
+                    <!-- Product details-->
+                    <div class="card-body p-4">
+                        <div class="text-center">
+                            <!-- Product name-->
+                            <h5 class="fw-bolder">{{products.title}}</h5>
+                            <!-- Product price-->
+                            ${{products.price}}
+                        </div>
+                    </div>
+                    <!-- Product actions-->
+                    <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
+
+                        <button (click)="deleteFromWishlist(products)" style="float: left;" class="btn btn-outline-danger mt-auto me-5">
+                            <i class="fa fa-trash"></i>
+                        </button>
+                        <button (click)="addToCart(products)" style="float: right;" class="btn btn-outline-success mt-auto">
+                            <i class="fa-solid fa-cart-plus"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

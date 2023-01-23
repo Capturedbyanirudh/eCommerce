@@ -1,0 +1,67 @@
+                                          
+
+
+                                          E Commerce Website
+                                          ------------------
+
+                                       Front End : Using angular
+
+                              1. Create angular project - ng new project
+                              2. Run angular project - ng serve 
+                              3. add bootstrap , font awesome,google fonts in inex.js 
+                              4. Lazy Load the commonly used html pages inside a module
+                                 ng g m products --route  products --module app.module
+
+                              5. add router -outlet selector inside the route component html page
+                              6. Create component should lazy loaded in the products module
+                                 all-products    - ng g c products/all-products
+                                 cart            - ng g c products/cart
+                                 wish-list       - ng g c products/wish-list
+                                 page-not-found  - ng g c page-not-found
+                                 header          - ng g c header
+                                 footer          - ng g c footer
+
+                              7. Set up path for each components
+                                 - to redirect from localhost:4200 to specific route
+
+                              8. Design the component
+                              24. Create Angular service
+                              25. Import HttpClientodule in products module
+                              26. Dependency inject HttpClient class in api service ts file
+                              27. call api in all-products component
+                              28. Import productModule in AppModule
+
+
+
+                                                     MongoDB
+                              9. Store all Products details in MongoDB as a data Base
+
+
+                                                  
+                                                  
+                                             Node and Express
+                             
+                                Create back end using - Node and Express js
+                             -----------------------------------------------
+
+                               10. Create a folder for server
+                               11. Create a Package.json file , cmd : npm init
+                               12. Create index.js file
+                               13. Install Express : npm i express
+                               14. Import express inside index.js file    
+                               15. Using express create a server application
+                               16. Setup the port for server application
+                               17. Use json parser in server application
+                               18. Install cors protocol inside server : npm i cors
+                               19. Import cors in index.js
+                               20. Using cors specify origin to server app
+                               21. Install mongoose to establish connection between server and MongoDB
+                                     :npm i mongoose
+                               22. Using mongoose establish connection between server and MongoDB
+                                     -Create db.js file 
+                                     -import mongoose in db.js file
+                                     -Using mongoose define the connection String
+                                     -Define Model for Products
+                                     -Export model so that it can be used in another file
+                               23. Resolving API in index.js
+

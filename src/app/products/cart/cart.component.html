@@ -1,0 +1,124 @@
+<!-- When cart is empty -->
+<div class="container">
+    <div class="row text-center mt-2" *ngIf="cartItems.length==0">
+        <div class="col" style="margin-top: 100px;">
+            <img src="https://arteno.serveradda.in/assets/images/deafult/emptycart.gif" alt="cart empty image">
+            <h3 class="mt-2"> Your Cart is Empty</h3>
+            <a class="btn btn-dark mt-2 mb-5" routerLink="/">Shop Now</a>
+        </div>
+    </div>
+</div>
+
+
+
+
+<!-- Cart with contents -->
+<div class="container mt-5 p-4" *ngIf="cartItems.length!=0">
+    <div class="row">
+        <div class="col">
+            <table class="table border p-5">
+                <thead>
+                    <tr>
+                        <th> No</th>
+                        <th> Name</th>
+                        <th> Image</th>
+                        <th> Description</th>
+                        <th> Price</th>
+                        <th> Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- 1st Row Change According to User -->
+                    <tr *ngFor="let products of cartItems; let i=index">
+                        <td>{{i+1}}</td>
+                        <td>{{products.title}}</td>
+                        <td>
+                            <img width="100px" [src]="products.image" alt="no image">
+                        </td>
+                        <td>{{products.description}}</td>
+                        <td>
+                            ${{products.price}}
+                        </td>
+                        <td>
+                            <i (click)="removeItem(products)" class="fa fa-trash text-danger"></i>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <div class="m-3" style="float: right;">
+                <td>
+                    <button (click)="removeAll()" class="btn btn-danger">Empty Cart</button>
+                </td>
+                <td>
+                    <a class="btn btn-primary ms-2" routerLink="/">Shop More</a>
+                </td>
+                <td>
+                    <button class="btn btn-success ms-2" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Check
+                        Out</button>
+                </td>
+                <td>
+                    <b for="" class="ms-2"> ${{grantTotal}}</b>
+                </td>
+
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+<!-- checkout Model -->
+
+<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+    aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="staticBackdropLabel">Checkout</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <h3>Delivery Address </h3>
+                <form class="border p-2">
+                    <input type="text" placeholder="Customer Name" class="form-control mb-2">
+                    <input type="text" placeholder="Customer Appartment/flat/House number" class="form-control  mb-2">
+                    <input type="text" placeholder="Customer Pincode" class="form-control  mb-2">
+                    <input type="text" placeholder="Customer State" class="form-control  mb-2">
+                    <input type="text" placeholder="Customer Country" class="form-control  mb-2">
+                    <input type="text" placeholder="Customer Contact Number" class="form-control  mb-2">
+                </form>
+                <div [ngSwitch]="grantTotal" class="mt-2 p-2">
+                    <h4>Discounts</h4>
+                    <span>
+                        <img (click)="discount5per($event.target)" *ngSwitchCase="20" width="100px"
+                            src="https://tse2.mm.bing.net/th?id=OIP.qGX1m6nnywLRHCJZt-l1AwAAAA&pid=Api&P=0"
+                            alt="no coupon">
+                    </span>
+                    <span>
+                        <img (click)="discount10per($event.target)" *ngSwitchCase="109.95" width="80px"
+                            src="https://tse2.mm.bing.net/th?id=OIP.z-A-9Maa91F7rOsoQmwG1AHaHa&pid=Api&P=0"
+                            alt="no coupon">
+                    </span>
+                    <span>
+                        <img (click)="discount50per($event.target)" *ngSwitchCase="300" width="100px"
+                            src="https://www.psdstamps.com/wp-content/uploads/2019/11/grunge-50-percent-off-label-png.png"
+                            alt="no coupon">
+                    </span>
+                    <span>
+                        <img (click)="discount3per($event.target)" lt width="100px"
+                            src="http://www.regionalsupplyblog.com/wp-content/uploads/2014/02/promo-20130306-185440.png"
+                            alt="no coupon">
+
+                    </span>
+                </div>
+            </div>
+            <div *ngIf="updatedTotal">
+                <h5>New Total after Discount: <b class="text-danger text-center">{{updatedTotal}}</b></h5>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                <button (click)="proceed()" type="button" class="btn btn-primary">Proceed</button>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,1 +1,25 @@
 /* You can add global styles to this file, and also import other style files */
+@import url('https://fonts.googleapis.com/css2?family=Aboreto&family=Open+Sans:ital,wght@1,300;1,700&family=Oswald:wght@300&family=Silkscreen&display=swap');
+
+
+body {
+    font-family: 'Oswald', sans-serif;
+}
+
+.card-img-top {
+    width: 200px;
+    height: 200px;
+    transition: 0.5s;
+}
+
+.card-img-top:hover {
+    transform: scale(1.25);
+    transition: 0.5s;
+}
+
+.navbar {
+    position: fixed;
+    width: 100%;
+    z-index: 1;
+    top: 0;
+}
